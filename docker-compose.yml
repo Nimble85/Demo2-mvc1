@@ -35,7 +35,7 @@ services:
 #    container_name: web1
 #    image: dockercloud/hello-world
 #    image: nimble85/web_1:latest
-    image: web_8t:latest
+    image: web_2b:latest
 #    env_file: .env
     ports:
       - 81:80
@@ -47,7 +47,7 @@ services:
 #    container_name: web2
 #    image: dockercloud/hello-world
 #    image: nimble85/web_1:latest
-    image: web_8t:latest
+    image: web_2b:latest
 
 #    env_file: .env
     ports:
@@ -70,7 +70,7 @@ services:
 #    volumes:
 #      - //d/Demo2:/Demo2
 #    command: bin/bash -c "/opt/mssql/bin/sqlservr && sleep 30s && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P VleDh23byUB -i /Demo2/dbo.books.sql"
-    command: bin/bash -c "/opt/mssql/bin/sqlservr && sleep 30s && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "VleDh23byUB" -Q "RESTORE DATABASE BS1Context FROM DISK='/var/opt/mssql/BS1Context.bak' WITH MOVE 'BS1Context' TO '/var/opt/mssql/data/BS1Context.MDF', MOVE 'BS1Context log' TO '/var/opt/mssql/data/BS1Context.ldf'""
+#    command: bin/bash -c "/opt/mssql/bin/sqlservr && sleep 30s && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P VleDh23byUB% -Q "RESTORE DATABASE BS1Context FROM DISK='/var/opt/mssql/BS1Context.bak' WITH MOVE 'BS1Context' TO '/var/opt/mssql/data/BS1Context.MDF', MOVE 'BS1Context_log' TO '/var/opt/mssql/data/BS1Context.ldf'""
 
 #    env_file: .env
     ports:
