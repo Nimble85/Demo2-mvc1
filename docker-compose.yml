@@ -1,0 +1,102 @@
+version: '2'
+
+services:
+
+
+#  haproxy:
+#    build: ./haproxy
+#    container_name: haproxy
+#    ports:
+#      - "80:80"
+
+### HA Proxy #######################################
+#  lb:
+##    build: ./haproxy
+##    container_name: haproxy
+#    image: dockercloud/haproxy:staging
+#    links:
+#      - web1
+#      - web2
+#    #    env_file: .env
+#    environment:
+#      - DOCKER_HOST
+#      - BALANCE
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    ports:
+#      - 80:80
+
+#      - ./haproxy:/usr/local/etc/haproxy
+
+
+  #### WEB SERVER ONE ###################################################
+
+  web1:
+#    container_name: web1
+#    image: dockercloud/hello-world
+#    image: nimble85/web_1:latest
+    image: web_8t:latest
+#    env_file: .env
+    ports:
+      - 81:80
+#      - "443:443"
+
+#### WEB SERVER TWO ###################################################
+
+  web2:
+#    container_name: web2
+#    image: dockercloud/hello-world
+#    image: nimble85/web_1:latest
+    image: web_8t:latest
+
+#    env_file: .env
+    ports:
+      - 82:80
+#      - "443:443"docker tag
+
+
+#### MYSQL SERVER ###################################################
+
+  mssql:
+#    image: microsoft/mssql-server-linux:latest
+    container_name: mssql
+    build: ./mssql
+#    container_name: mssql
+#    image: mssql
+#    environment:
+#      - 'ACCEPT_EULA=Y'
+#      - 'SA_PASSWORD=VleDh23byUB'
+
+#    volumes:
+#      - //d/Demo2:/Demo2
+#    command: bin/bash -c "/opt/mssql/bin/sqlservr && sleep 30s && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P VleDh23byUB -i /Demo2/dbo.books.sql"
+    command: bin/bash -c "/opt/mssql/bin/sqlservr && sleep 30s && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "VleDh23byUB" -Q "RESTORE DATABASE BS1Context FROM DISK='/var/opt/mssql/BS1Context.bak' WITH MOVE 'BS1Context' TO '/var/opt/mssql/data/BS1Context.MDF', MOVE 'BS1Context log' TO '/var/opt/mssql/data/BS1Context.ldf'""
+
+#    env_file: .env
+    ports:
+      - 1433:1433
+
+
+
+### HA Proxy #######################################
+#  haproxy:
+##    build: ./haproxy
+#    container_name: haproxy
+#    image: 'dockercloud/haproxy:latest'
+#    links:
+#     - web1
+#     - web2
+#    env_file: .env
+#    ports:
+#      - "80:80"
+##    volumes:
+##      - ./haproxy:/usr/local/etc/haproxy
+
+
+
+#networks:
+#  default:
+#    driver: bridge
+#    ipam:
+#      config:
+#      - subnet: 172.25.0.0/24
