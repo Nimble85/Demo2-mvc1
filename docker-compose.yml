@@ -35,7 +35,7 @@ services:
 #    container_name: web1
 #    image: dockercloud/hello-world
 #    image: nimble85/web_1:latest
-    image: web_2b:latest
+    image: web_1q:latest
 #    env_file: .env
     ports:
       - 81:80
@@ -47,7 +47,7 @@ services:
 #    container_name: web2
 #    image: dockercloud/hello-world
 #    image: nimble85/web_1:latest
-    image: web_2b:latest
+    image: web_1q:latest
 
 #    env_file: .env
     ports:
@@ -65,13 +65,14 @@ services:
 #    image: mssql
 #    environment:
 #      - 'ACCEPT_EULA=Y'
-#      - 'SA_PASSWORD=VleDh23byUB'
+#      - 'SA_PASSWORD=VleDh23byUB%'
 
 #    volumes:
 #      - //d/Demo2:/Demo2
 #    command: bin/bash -c "/opt/mssql/bin/sqlservr && sleep 30s && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P VleDh23byUB -i /Demo2/dbo.books.sql"
 #    command: bin/bash -c "/opt/mssql/bin/sqlservr && sleep 30s && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P VleDh23byUB% -Q "RESTORE DATABASE BS1Context FROM DISK='/var/opt/mssql/BS1Context.bak' WITH MOVE 'BS1Context' TO '/var/opt/mssql/data/BS1Context.MDF', MOVE 'BS1Context_log' TO '/var/opt/mssql/data/BS1Context.ldf'""
-
+#    command: bin/bash -c "/opt/mssql/bin/sqlservr && sleep 60s && /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P VleDh23byUB% -i /var/opt/mssql/dbo.books.sql"
+####    command: bin/bash -c "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P VleDh23byUB% -i /var/opt/mssql/dbo.books.sql"
 #    env_file: .env
     ports:
       - 1433:1433

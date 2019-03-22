@@ -1,7 +1,7 @@
-USE [BS1Context-e32e49de-5d10-4fd7-8fc4-42487a944aab]
+USE [BS1Context]
 GO
 
-/****** Объект: Table [dbo].[books] Дата скрипта: 20.03.2019 15:27:07 ******/
+/****** Объект: Table [dbo].[books] Дата скрипта: 22.03.2019 14:39:04 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,6 +11,7 @@ GO
 CREATE TABLE [dbo].[books] (
     [id]     INT            IDENTITY (1, 1) NOT NULL,
     [author] NVARCHAR (MAX) NULL,
+    [name]   NVARCHAR (MAX) NULL,
     [price]  INT            NOT NULL
 );
 
