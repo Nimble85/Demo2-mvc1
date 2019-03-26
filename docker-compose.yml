@@ -59,8 +59,9 @@ services:
 
   mssql:
 #    image: microsoft/mssql-server-linux:latest
-    container_name: mssql
     build: ./mssql
+    container_name: mssql
+
 #    container_name: mssql
 #    image: mssql
 #    environment:
